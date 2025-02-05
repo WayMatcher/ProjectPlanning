@@ -96,7 +96,7 @@ Mindestanforderungen sind:
 - Dokumentation immer verfügbar
 - Eigenständigkeit
 
-### minimale Qualitätsanforderungen an den Quellcode
+### Minimale Qualitätsanforderungen an den Quellcode
 
 - Ausnahmebehandlung (Exception Handling)
 - Objektorientierung
