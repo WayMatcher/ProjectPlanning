@@ -72,7 +72,7 @@ Konkurrenten: *BlaBlaCar*
 
 ## Ressourcen und Budget
 
-### Personalaufwand	Gesamt
+### Personalaufwand Gesamt
 
 - Intern: 128h
 - Extern: kein externer Aufwand
