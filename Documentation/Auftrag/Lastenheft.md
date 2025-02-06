@@ -1,9 +1,11 @@
 # Lastenheft App-Entwickler
 
+![Logo von WayMatcher](/Images/WM-Logo-Cropped.png)
+
 - **Projekt:** WayMatcher – Fahrgemeinschafts-Applikation
-- **Angebot an:** Herr Rudigier & Herr Wonnebauer
-- **Auftraggeber:** Herr Pausch Marcel
-- **Autor des Dokuments:** Herr Rudigier & Herr Wonnebauer
+- **Angebot an:** Hr. Rudigier & Hr. Wonnebauer
+- **Auftraggeber:** Hr. Pausch
+- **Autor des Dokuments:** Hr. Rudigier & Hr. Wonnebauer
 
 ---
 
@@ -93,7 +95,7 @@ WayMatcher soll eine Webanwendung sein, die es Nutzern ermöglicht, Reisetermine
 
 #### Technische Grundlagen
 
-- Website soll lokal gehosted werden können.
+- Die Website soll lokal gehosted werden können.
 - Soll für Mobile-Geräte benutzbar sein.
 - Es muss dem Benutzer schnell reagieren.
 
@@ -111,92 +113,32 @@ WayMatcher soll eine Webanwendung sein, die es Nutzern ermöglicht, Reisetermine
 
 ### Minimale Qualitätsanforderungen an den Quellcode
 
-- Ausnahmebehandlung (Exception Handling)
-- Objektorientierung
-- Portabilität (responsive)
-- Technische Dokumentation und Projektdokumentation zur Abschlusspräsentation in Hardcopy
-- Leistungsreserven für Zusatzfunktionalitäten einplanen
+- Sauberer, lesbarer und gut dokumentierter Code.
+- Einhaltung einheitlicher Code-Konventionen.
+- Getesteter und fehlerfreier Code.
 
 ### Applikation im Livebetrieb
 
-- funktionierende Backenddienste
-- funktionierendes und vollständiges Frontend
-- funktionierende Datenbank (relational)
+- Bereitstellung auf einem lokalen Server.
+- Skalierbare Infrastruktur zur Unterstützung einer wachsenden Nutzerzahl.
 
 ### Zeitliche Vorgaben und Deadlines
 
-- Projektstart: 10.09.2024
-- Testabschluss Projekt: 01.11. 2024
-- Projektpräsentation: 05.11.2024 und 06.11.2024
-- Dokumentationsübergabe: 04.11.2024
-- Projektnachbereitung abgeschlossen: 08.11.2024
+- Projektstart: 05.02.2025
+- Lastenheft abgeschlossen: 07.02.2025
+- Pflichtenheft abgeschlossen: 21.02.2025
+- Umsetzung
+  - Start: 24.02.2025
+  - Ende: 18.03.2025
+- Testphase
+  - Start: 18.03.2025
+  - Ende: 24.03.2025
+- Projektpräsentation: 25.03.2025
+- Projektabschluss: 01.04.2025
 
-### Ergänzungen
+### Erweiterungen
 
-Für höhere Bewertungen als „Genügend“ sind Zusätze erforderlich.
-Diskutieren Sie in der Projektgruppe, welche Erweiterung Sie anbieten können.
-Beispiele können Sie auch von Ihrem Projektbetreuer erfragen!
-
-### Anhänge
-
-#### Anforderungsliste für einen positiven Projektabschluss als Check-List
-
-##### **Hardware:**
-
-- Notebook, virtualisierte Serverinstanzen, externe Hardware
-
-##### **Software:**
-
-- Funktionierende Serverdienste für Backend nach Anforderung im Pflichtenheft
-- Frontend nach Anforderung im Pflichtenheft
-- relationale Datenbank nach Anforderung und CRUD und referentielle Integrität
-
-##### **Dokumente:**
-
-- Pflichtenheft – ausgedruckt
-- Projekthandbuch vollständig mit Wochenberichten - ausgedruckt
-- Technische Dokumentation und Bedienungsanleitung - ausgedruckt
-- Quellcodedokumentation – generiert und digital
-- Projektstrukturplan A3 ausgedruckt im Projekthandbuch
-
-##### **Präsentation:**
-
-- mindestens 8 Folien gem. Vorgabe
-- Bei einer Gruppe, beide Projektpartner anwesend und gleichmäßige Aufteilung der Präsentation
-- Vorführung des Projektes, der Applikation und Erklärungen über technische Details
-- Präsentationsdauer ca. 18-22 Minuten pro Projektmitglied
-
-#### Beispiele für „Erweiterungen“
-
-##### **Software Erweiterungen:**
-
-- z.B.: Multifaktor Authentifizierung 2
-- z.B.: externe relationale Datenbank 3
-- z.B.: Clouddienste (App-Service, …) 2
-- z.B.: Verwendung von Designpattern 2
-- z.B.: Mehrbenutzer Applikation 1
-- z.B.: Passwort zurücksetzen 3
-- z.B.: zusätzliche Datenbank (NoSQL) – nicht lokal 1
-
-##### **Datenbank Erweiterungen:**
-
-- Trigger sinnvoll eingesetzt – verpflichtend 3
-- Funktion sinnvoll eingesetzt – verpflichtend 2
-- Prozedur sinnvoll eingesetzt – verpflichtend 1
-
-##### **Dokumente sind für die jeweilige Beurteilung erforderlich:**
-
-- vollständiges GANTT-Diagramm (Zeitvorgaben real)  - verpflichtend 3
-- Testkonzept, vollständig dokumentiert und funktional - verpflichtend 2
-- Kostenplan  - verpflichtend 3
-- Netzplan mit kritischem Pfad  - verpflichtend 2
-- Ressourcenplan  - verpflichtend 2
-- DevOps oder agiles Board (vollständige Planung) - verpflichtend 1
-- Sicherheitskonzept (Betrieb, Entwicklung, …) - verpflichtend 1
-  
-##### **Präsentation: Erweiterungen**
-
-- zu den Erweiterungen, jeweils mindestens zwei zusätzliche Folien
-
-Hinweis:
-Die technische Dokumentation muss auch die „Erweiterungen“ beinhalten
+- Google Maps Karte
+- Chat zwischen Benutzern
+- Intelligente Pfadfindung der Reisetermine (z.B. Suche in einem Radius am Weg)
+- Deteilreichere Benutzerprofile (z.B. Bewertungen, Auto, etc.)
