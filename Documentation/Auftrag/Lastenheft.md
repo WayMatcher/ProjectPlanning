@@ -1,9 +1,9 @@
 # Lastenheft App-Entwickler
 
 - **Projekt:** WayMatcher – Fahrgemeinschafts-Applikation
-- **Angebot an:** Rudigier & Wonnebauer
-- **Auftraggeber:** Pausch Marcel
-- **Autor des Dokuments:** Rudigier & Wonnebauer
+- **Angebot an:** Herr Rudigier & Herr Wonnebauer
+- **Auftraggeber:** Herr Pausch Marcel
+- **Autor des Dokuments:** Herr Rudigier & Herr Wonnebauer
 
 ---
 
@@ -11,7 +11,7 @@
 
 ### Einführung und Zielbestimmung
 
-Im Folgenden werden die Anforderungen für die Beurteilung ausführlich angeführt und bildet somit die Grund-lage für den positiven Projektabschluss.
+Im Folgenden werden die Anforderungen für die Beurteilung ausführlich angeführt und bildet somit die Grundlage für den positiven Projektabschluss.
 
 #### Beschreibung des Unternehmens/Organisation
 
