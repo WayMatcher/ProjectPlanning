@@ -14,24 +14,8 @@ Das Singleton-Muster stellt sicher, dass eine Klasse nur eine einzige Instanz be
 public class Singleton
 {
     private static Singleton _instance;
-    private static readonly object _lock = new object();
-
     private Singleton() {}
-
-    public static Singleton Instance
-    {
-        get
-        {
-            lock (_lock)
-            {
-                if (_instance == null)
-                {
-                    _instance = new Singleton();
-                }
-                return _instance;
-            }
-        }
-    }
+    public static Singleton Instance => _instance ??= new Singleton();
 }
 ```
 
@@ -39,7 +23,7 @@ public class Singleton
 
 ### Prototype Pattern
 
-Das Prototype-Muster ermöglicht das Klonen von Objekten, um neue Instanzen zu erstellen, anstatt direkt neue Objekte zu instanziieren.
+Das Prototype-Muster ermöglicht das Klonen eines bestehenden Objekts, um neue Instanzen zu erstellen, anstatt direkt neue Objekte zu instanziieren. Es wird häufig verwendet, um kostspielige Objekterstellungen zu vermeiden.
 
 #### Beispiel in C#
 
@@ -47,11 +31,7 @@ Das Prototype-Muster ermöglicht das Klonen von Objekten, um neue Instanzen zu e
 public class Prototype : ICloneable
 {
     public string Name { get; set; }
-
-    public object Clone()
-    {
-        return this.MemberwiseClone();
-    }
+    public object Clone() => new Prototype { Name = this.Name };
 }
 ```
 
@@ -66,25 +46,10 @@ Das Builder-Muster trennt die Konstruktion eines komplexen Objekts von seiner Re
 ```csharp
 public class PersonBuilder
 {
-    private string _name;
-    private int _age;
-
-    public PersonBuilder SetName(string name)
-    {
-        _name = name;
-        return this;
-    }
-
-    public PersonBuilder SetAge(int age)
-    {
-        _age = age;
-        return this;
-    }
-
-    public Person Build()
-    {
-        return new Person { Name = _name, Age = _age };
-    }
+    private readonly Person _person = new Person();
+    public PersonBuilder SetName(string name) { _person.Name = name; return this; }
+    public PersonBuilder SetAge(int age) { _person.Age = age; return this; }
+    public Person Build() => _person;
 }
 ```
 
@@ -130,6 +95,7 @@ public class ButtonFactory
 Das Facade-Muster bietet eine vereinfachte Schnittstelle zu einem komplexen System.
 
 #### Beispiel in C#
+
 ```csharp
 public class SubsystemA { public void OperationA() => Console.WriteLine("Operation A"); }
 public class SubsystemB { public void OperationB() => Console.WriteLine("Operation B"); }
@@ -141,8 +107,8 @@ public class Facade
 
     public void Operation()
     {
-        _a.OperationA();
-        _b.OperationB();
+        Console.WriteLine("Operation A");
+        Console.WriteLine("Operation B");
     }
 }
 ```
@@ -156,27 +122,10 @@ Das Proxy-Muster stellt einen Stellvertreter für ein anderes Objekt bereit, um 
 #### Beispiel in C#
 
 ```csharp
-public interface IService
-{
-    void Request();
-}
-
-public class RealService : IService
-{
-    public void Request() => Console.WriteLine("Echte Anfrage wird bearbeitet.");
-}
-
-public class ProxyService : IService
+public class ProxyService
 {
     private RealService _realService;
-
-    public void Request()
-    {
-        if (_realService == null)
-            _realService = new RealService();
-        
-        _realService.Request();
-    }
+    public void Request() => (_realService ??= new RealService()).Request();
 }
 ```
 
@@ -186,7 +135,7 @@ public class ProxyService : IService
 
 ### Iterator Pattern
 
-Das Iterator-Muster bietet eine Möglichkeit, über eine Sammlung von Objekten zu iterieren.
+Das Iterator-Muster bietet eine Möglichkeit, über eine Sammlung von Objekten zu iterieren, ohne deren interne Struktur offenzulegen.
 
 #### Beispiel in C#
 
@@ -215,11 +164,9 @@ Das Observer-Muster implementiert ein Ein-zu-Viele-Abhängigkeitsverhältnis zwi
 public class Subject
 {
     private List<IObserver> _observers = new List<IObserver>();
-
     public void Attach(IObserver observer) => _observers.Add(observer);
     public void Notify() => _observers.ForEach(o => o.Update());
 }
-
 public interface IObserver { void Update(); }
 ```
 
@@ -227,7 +174,7 @@ public interface IObserver { void Update(); }
 
 ### Mediator Pattern
 
-Das Mediator-Muster definiert ein Objekt, das die Kommunikation zwischen Objekten kapselt.
+Das Mediator-Muster ermöglicht eine zentrale Kommunikation zwischen mehreren Objekten, ohne dass diese direkt miteinander interagieren müssen. Es reduziert Abhängigkeiten zwischen Komponenten.
 
 #### Beispiel in C#
 
@@ -236,12 +183,8 @@ public class Mediator
 {
     private List<IColleague> _colleagues = new List<IColleague>();
     public void Register(IColleague colleague) => _colleagues.Add(colleague);
-    public void Send(string message, IColleague sender)
-    {
-        _colleagues.Where(c => c != sender).ToList().ForEach(c => c.Receive(message));
-    }
+    public void Send(string message, IColleague sender) => _colleagues.Where(c => c != sender).ToList().ForEach(c => c.Receive(message));
 }
-
 public interface IColleague { void Receive(string message); }
 ```
 
@@ -255,24 +198,14 @@ Das State-Muster erlaubt einem Objekt, sein Verhalten zu ändern, wenn sich sein
 
 ```csharp
 public interface IState { void Handle(Context context); }
-
 public class StateA : IState
 {
-    public void Handle(Context context)
-    {
-        Console.WriteLine("State A");
-        context.SetState(new StateB());
-    }
+    public void Handle(Context context) { Console.WriteLine("State A"); context.SetState(new StateB()); }
 }
-
 public class StateB : IState
 {
-    public void Handle(Context context)
-    {
-        Console.WriteLine("State B");
-    }
+    public void Handle(Context context) { Console.WriteLine("State B"); }
 }
-
 public class Context
 {
     private IState _state;
