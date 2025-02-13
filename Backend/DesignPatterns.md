@@ -135,6 +135,7 @@ public class AnimalFactory
 Das Facade-Muster bietet eine vereinfachte Schnittstelle zu einem komplexen System.
 
 #### Beispiel in C#
+
 ```csharp
 public class Logger
 {
@@ -194,7 +195,7 @@ public class ProxyService : IService
 
 Das Decorator-Muster fügt Objekten zur Laufzeit zusätzliche Funktionen hinzu, ohne deren Struktur zu verändern.
 
-```csharp 
+```csharp
 public interface ICoffee 
 {
     string GetDescription();
