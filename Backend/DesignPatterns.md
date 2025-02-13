@@ -1,7 +1,5 @@
 # Design Patterns
 
----
-
 ## 1. Creational Patterns
 
 ### 1.1. Singleton Pattern
