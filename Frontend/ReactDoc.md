@@ -1,7 +1,5 @@
 # React Documentation
 
----
-
 ## 1. Single Page Application (SPA)
 
 A **Single Page Application (SPA)** is a web application that loads a single HTML page and dynamically updates content as the user interacts with the app. React facilitates SPA development by allowing components to manage UI without reloading the page, improving performance and user experience.
