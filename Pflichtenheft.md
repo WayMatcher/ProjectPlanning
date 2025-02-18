@@ -63,10 +63,29 @@ Die Anwendung besteht aus folgenden Komponenten:
 - **Chat:**  
   - Integrierter Chat innerhalb eines Reisetermins mit anderen Benutzern
 
+#### **3.1.1. Zuständige Arbeitspakete**
+
+| PSP-Code | PSP-Name       |
+| -------- | -------------- |
+| [1.1.4]  | Event          |
+| [1.2.4]  | Event-Service  |
+| [1.3.2]  | Event-Planning |
+| [1.3.3]  | Event-Page     |
+
 ### **3.2. Einladungen**
 
 - Einladung zu Reiseterminen mit kurzer Nachricht  
 - Pflicht zum Ausfüllen des **Passagierformulars** nach Annahme  
+
+#### **3.2.1. Zuständige Arbeitspakete**
+
+| PSP-Code | PSP-Name               |
+| -------- | ---------------------- |
+| [1.1.1]  | User                   |
+| [1.1.4]  | Event                  |
+| [1.2.2]  | E-Mail Service         |
+| [1.3.2]  | Event-Planning         |
+| [1.3.5]  | Messages/Notifications |
 
 ### **3.3. Passagierformular**
 
@@ -75,7 +94,16 @@ Die Anwendung besteht aus folgenden Komponenten:
 - Passagiere  
 - Beschreibung  
 - Angebot an Piloten erstellen  
-- Abbrechen mit Begründung  
+- Abbrechen mit Begründung
+  
+#### **3.3.1. Zuständige Arbeitspakete**
+
+| PSP-Code | PSP-Name       |
+| -------- | -------------- |
+| [1.1.4]  | Event          |
+| [1.2.4]  | Event-Service  |
+| [1.3.2]  | Event-Planning |
+| [1.3.3]  | Event-Page     |
 
 ### **3.4. Benutzerverwaltung**
 
@@ -91,20 +119,49 @@ Die Anwendung besteht aus folgenden Komponenten:
   - Bewertungen (1-5 Sterne)  
 - **Login/Registrierung/Bearbeiten/Löschen Funktionen**  
 - **Liste von Fortbewegungsmitteln**  
+  
+#### **3.4.1. Zuständige Arbeitspakete**
+
+| PSP-Code | PSP-Name        |
+| -------- | --------------- |
+| [1.1.1]  | User            |
+| [1.2.3]  | User-Service    |
+| [1.3.1]  | User-Management |
 
 ### **3.5. Suche/Filter**
 
-- Orte/Strecke  
-- Uhrzeit/Datum (Hin- und Rückfahrt)  
-- Anzahl freie Plätze  
-- Bestimmte Benutzer  
-- Beigetretene Reisetermine  
+- Orte/Strecke
+- Uhrzeit/Datum (Hin- und Rückfahrt)
+- Anzahl freie Plätze
+- Bestimmte Benutzer
+- Beigetretene Reisetermine
+
+#### **3.5.1. Zuständige Arbeitspakete**
+
+| PSP-Code | PSP-Name                  |
+| -------- | ------------------------- |
+| [1.1.1]  | User                      |
+| [1.1.2]  | Address                   |
+| [1.1.3]  | Vehicle                   |
+| [1.1.4]  | Events                    |
+| [1.1.5]  | Schedule                  |
+| [1.1.10] | Views & Stored Procedures |
+| [1.2.2]  | E-Mail-Service            |
+| [1.2.3]  | User-Service              |
+| [1.2.4]  | Event-Service             |
+| [1.3.7]  | Search                    |
 
 ### **3.6. Karte**
 
-- Anzeige der Strecke (Google Maps)  
-- Start- und Endpunkt  
-- Öffnen/Schließen Funktionen  
+- Anzeige der Strecke (Google Maps)
+- Start- und Endpunkt
+- Öffnen/Schließen Funktionen
+
+#### **3.6.1. Zuständige Arbeitspakete**
+
+| PSP-Code | PSP-Name |
+| -------- | -------- |
+| [1.3.4]  | Map-View |
 
 ---
 
