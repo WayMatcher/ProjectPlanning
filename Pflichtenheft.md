@@ -196,8 +196,13 @@ TODO neu schreiben
 ## **7. Erweiterungen (Optional)**
 
 - **Karte:**  
-  - Ansicht der Strecke (**Google Maps**) mit Start- und Endpunkt.
-  - Öffnen/Schließen Funktionen für die Kartenansicht.
-- **Intelligente Pfadfindung der Reisetermine** (z.B. Suche in einem Radius am Weg)
-- **Chat zwischen Benutzern**
-- **Detaillierte Benutzerprofile** (z.B. Bewertungen, Auto, etc.)
+  - Ansicht der Strecke (**Google Maps**) mit Start- und Endpunkt.  
+  - Öffnen/Schließen Funktionen für die Kartenansicht.  
+- **Intelligente Pfadfindung der Reisetermine** (z.B. Suche in einem Radius am Weg)  
+- **Chat zwischen Benutzern**  
+- Verwendung von **Designpattern**
+- **Detailierte Benutzerprofile** (Bewertungen, Automodell, Führerschein)
+- **Multifaktor Authentifizierung**
+- **Github Dokumentation** via Markdown und Projektmanagement
+- **Clouddienste** (App-Service)
+- **E-Mail Versand** (Passwort zurücksetzen & Benachrichtigungen)

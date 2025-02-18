@@ -162,4 +162,9 @@ Die Anwendung soll sowohl für die Desktop- als auch für die mobile Nutzung opt
   - Öffnen/Schließen Funktionen für die Kartenansicht.  
 - **Intelligente Pfadfindung der Reisetermine** (z.B. Suche in einem Radius am Weg)  
 - **Chat zwischen Benutzern**  
-- **Detaillierte Benutzerprofile** (z.B. Bewertungen, Auto, etc.)  
+- Verwendung von **Designpattern**
+- **Detailierte Benutzerprofile** (Bewertungen, Automodell, Führerschein)
+- **Multifaktor Authentifizierung**
+- **Github Dokumentation** via Markdown und Projektmanagement
+- **Clouddienste** (App-Service)
+- **E-Mail Versand** (Passwort zurücksetzen & Benachrichtigungen)
