@@ -17,7 +17,6 @@ Es dient als Grundlage für die Entwicklung und Implementierung der Anwendung un
 - Jugendliche
 - Studierende
 - Personen ohne Führerschein
-- Reisende
 - Sparsame Personen
 
 ---
