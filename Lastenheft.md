@@ -199,20 +199,25 @@ Die Anwendung soll sowohl für die Desktop- als auch für die mobile Nutzung opt
 
 ## **7. Verpflichtende Erweiterungen**
 
-| Status | Erweiterung                                                          | Note |
-| ------ | -------------------------------------------------------------------- | ---- |
-|        | **Datenbank: View / Trigger / Funktion / Prozedur**                  |      |
-|        | Trigger sinnvoll eingesetzt – verpflichtend                          | 3    |
-|        | Funktion sinnvoll eingesetzt – verpflichtend                         | 2    |
-|        | Prozedur sinnvoll eingesetzt – verpflichtend                         | 1    |
-|        | **Dokumente sind für die jeweilige Beurteilung erforderlich**        |      |
-|        | vollständiges GANTT-Diagramm (Zeitvorgaben real)  - verpflichtend    | 3    |
-|        | Testkonzept, vollständig dokumentiert und funktional - verpflichtend | 2    |
-|        | Kostenplan  - verpflichtend                                          | 3    |
-|        | Netzplan mit kritischem Pfad  - verpflichtend                        | 2    |
-|        | Ressourcenplan  - verpflichtend                                      | 2    |
-|        | DevOps oder agiles Board (vollständige Planung) - verpflichtend      | 1    |
-|        | Sicherheitskonzept (Betrieb, Entwicklung, …)  - verpflichtend        | 1    |
+### **7.1. Datenbank**
+
+| Status | Erweiterung                  | Note |
+| ------ | ---------------------------- | ---- |
+|        | Funktion sinnvoll eingesetzt | 1    |
+|        | Prozedur sinnvoll eingesetzt | 2    |
+|        | View sinnvoll eingesetzt     | 3    |
+
+### **7.2. Dokumente sind für die jeweilige Beurteilung erforderlich**
+
+| Status | Erweiterung                                          | Note |
+| ------ | ---------------------------------------------------- | ---- |
+|        | vollständiges GANTT-Diagramm (Zeitvorgaben real)     | 3    |
+|        | Testkonzept, vollständig dokumentiert und funktional | 2    |
+|        | Kostenplan                                           | 3    |
+|        | Netzplan mit kritischem Pfad                         | 2    |
+|        | Ressourcenplan                                       | 2    |
+|        | DevOps oder agiles Board (vollständige Planung)      | 1    |
+|        | Sicherheitskonzept (Betrieb, Entwicklung, …)         | 1    |
 
 ---
 
