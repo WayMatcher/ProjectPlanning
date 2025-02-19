@@ -155,16 +155,77 @@ Die Anwendung soll sowohl für die Desktop- als auch für die mobile Nutzung opt
 
 ---
 
-## **6. Erweiterungen (Optional)**  
+## **6. Check-Liste**
 
-- **Karte:**  
-  - Ansicht der Strecke (**Google Maps**) mit Start- und Endpunkt.  
-  - Öffnen/Schließen Funktionen für die Kartenansicht.  
-- **Intelligente Pfadfindung der Reisetermine** (z.B. Suche in einem Radius am Weg)  
-- **Chat zwischen Benutzern**  
-- Verwendung von **Designpattern**
-- **Detailierte Benutzerprofile** (Bewertungen, Automodell, Führerschein)
-- **Multifaktor Authentifizierung**
-- **Github Dokumentation** via Markdown und Projektmanagement
-- **Clouddienste** (App-Service)
-- **E-Mail Versand** (Passwort zurücksetzen & Benachrichtigungen)
+### **6.1. Hardware:**
+
+| Status | Hardware                          |
+| ------ | --------------------------------- |
+|        | Notebook                          |
+|        | Virtualisierte Serverinstanzen    |
+|        | Externe Hardware (falls benötigt) |
+
+### **6.2. Software und Datenbank:**
+
+| Status | Software/Datenbank                                                            |
+| ------ | ----------------------------------------------------------------------------- |
+|        | Funktionierende Serverdienste für Backend nach Anforderung im Pflichtenheft   |
+|        | Frontend nach Anforderung im Pflichtenheft                                    |
+|        | Relationale Datenbank nach Anforderung mit CRUD und referentieller Integrität |
+|        | Datenbank: View / Trigger / Funktion / Prozedur (3 davon verwenden)           |
+
+### **6.3. Dokumente:**
+
+| Status | Dokument                                         |
+| ------ | ------------------------------------------------ |
+|        | Projektsteckbrief                                |
+|        | Lastenheft                                       |
+|        | Pflichtenheft                                    |
+|        | Projekthandbuch vollständig mit Wochenberichten  |
+|        | Technische Dokumentation und Bedienungsanleitung |
+|        | Quellcodedokumentation – generiert und digital   |
+|        | Projektstrukturplan                              |
+
+### **6.4. Präsentation:**
+
+| Status | Präsentation                                                                                 |
+| ------ | -------------------------------------------------------------------------------------------- |
+|        | Mindestens 8 Folien gem. Vorgabe                                                             |
+|        | Bei einer Gruppe, beide Projektpartner anwesend und gleichmäßige Aufteilung der Präsentation |
+|        | Vorführung des Projektes, der Applikation und Erklärungen der techischen Details             |
+|        | Präsentationsdauer ca. 18-22 Minuten pro Projektmitglied                                     |
+
+---
+
+## **7. Verpflichtende Erweiterungen**
+
+| Status | Erweiterung                                                          | Note |
+| ------ | -------------------------------------------------------------------- | ---- |
+|        | **Datenbank: View / Trigger / Funktion / Prozedur**                  |      |
+|        | Trigger sinnvoll eingesetzt – verpflichtend                          | 3    |
+|        | Funktion sinnvoll eingesetzt – verpflichtend                         | 2    |
+|        | Prozedur sinnvoll eingesetzt – verpflichtend                         | 1    |
+|        | **Dokumente sind für die jeweilige Beurteilung erforderlich**        |      |
+|        | vollständiges GANTT-Diagramm (Zeitvorgaben real)  - verpflichtend    | 3    |
+|        | Testkonzept, vollständig dokumentiert und funktional - verpflichtend | 2    |
+|        | Kostenplan  - verpflichtend                                          | 3    |
+|        | Netzplan mit kritischem Pfad  - verpflichtend                        | 2    |
+|        | Ressourcenplan  - verpflichtend                                      | 2    |
+|        | DevOps oder agiles Board (vollständige Planung) - verpflichtend      | 1    |
+|        | Sicherheitskonzept (Betrieb, Entwicklung, …)  - verpflichtend        | 1    |
+
+---
+
+## **8. Optionale Erweiterungen**
+
+| Status | Erweiterung                                                                       | Note |
+| ------ | --------------------------------------------------------------------------------- | ---- |
+|        | **Intelligente Pfadfindung der Reisetermine** (z.B. Suche in einem Radius am Weg) | 1    |
+|        | **Chat zwischen Benutzern**                                                       | 1    |
+|        | Verwendung von **Designpattern**                                                  | 2    |
+|        | **Detailierte Benutzerprofile** (Bewertungen, Automodell, Führerschein)           | 2    |
+|        | **Multifaktor Authentifizierung**                                                 | 2    |
+|        | **Github Dokumentation** via Markdown und Projektmanagement                       | 2    |
+|        | Karte hinzufügen (Google Maps, Ansicht der Strecke)                               | 3    |
+|        | **Clouddienste** (App-Service)                                                    | 3    |
+|        | **E-Mail Versand** (Passwort zurücksetzen & Benachrichtigungen)                   | 3    |
