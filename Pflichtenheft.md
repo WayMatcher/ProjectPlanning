@@ -176,29 +176,68 @@ Die Anwendung besteht aus folgenden Komponenten:
 
 ### **4.1. Benutzerfreundlichkeit**
 
-- Die Anwendung soll benutzerfreundlich gestaltet sein, d.h. einfach zu bedienen, klar strukturiert und mit einer intuitiven Navigation ausgestattet sein.
-- Die Benutzeroberfläche soll übersichtlich und ansprechend sein und Informationen klar und prägnant darstellen.
-- Die Anwendung soll auf verschiedenen Geräten (Desktop, Tablet, Smartphone) gleichermaßen gut funktionieren.
+- Die Anwendung soll mittels übersichtlichen Schaltflächen sowie ansprechende Namen benutzerfreundlicher gestaltet werden
+- Das Design wird auf Basis von [Balsamiq Wireframe Mockup](Fahrgemeinschaftenapp_Mockup_v2.6.2.pdf) basiert
+- Die Farbpalette besteht aus diesen Farben:
+  - Primär(Akzent)-Farbe: #861388
+  - Sekundär-Farbe: #EEABC4
+  - Text-Farbe: #1D191B
+  - Erfolg-Farbe: #27873A
+  - Warnung-Farbe: #DEBB40
+  - Fehler-Farbe: #861322
+  - Hintergrund-Farbe: #EEDAE1
+
+![Color Palette WayMatcher](<Images\Color Theme WayMatcher.png>)
+
+#### **4.1.1. Test**
+
+Wird über eine oder mehrere ausenstehende Personen evaluiert.
 
 ### **4.2. Performance**
 
-- Die Anwendung soll eine hohe Performance gewährleisten, d.h. schnelle Ladezeiten, hohe Verfügbarkeit und Skalierbarkeit, um auch bei vielen Benutzern und großen Datenmengen eine optimale Benutzererfahrung zu bieten.
+- Die hohe Performance der Anwendung soll durch [Design Patterns](https://refactoring.guru/design-patterns) und eine ausreichend normalisierte relationelle Datenbank ermöglicht werden.
+
+#### **4.2.1. Test**
+
+Wird von ausenstehenden Personen auf angemessene Performance geprüft
 
 ### **4.3. Sicherheit**
 
-- Die Anwendung soll ein hohes Maß an Sicherheit gewährleisten, um Benutzerdaten und die Integrität des Systems zu schützen. Dies beinhaltet die Einhaltung von Datenschutzbestimmungen, den Schutz vor unbefugtem Zugriff und Datenverlust sowie eine sichere Authentifizierung der Benutzer.
+- Die hohe Sicherheit soll erzielt werden, indem User-Daten verschlüsselt versendet werden.
+- Der Webserver soll via HTTPS über Let's Encrypt Zertifikate aufrufbar sein.
+- Packages und Frameworks werden auf dem neuesten stabilen Stand gehalten.
+
+#### **4.3.1 Test**
+
+Interne Penetration-tests sollen gewährleisten, dass die Sicherheit gegeben ist.
 
 ### **4.4. Zuverlässigkeit**
 
-- Die Anwendung soll zuverlässig funktionieren, d.h. stabil laufen, fehlertolerant sein und die Integrität der Daten gewährleisten.
+- Das Hosting des Front- und Backends sowie auch die Datenbank werden an Cloud-Provider (Ionos & Azure) ausgelagert.
+
+#### **4.4.1 Test**
+
+Die Website wird auf Erreichbarkeit geprüft.
 
 ### **4.5. Kompatibilität**
 
-- Die Anwendung soll mit gängigen Webbrowsern, Geräten (Desktop, Tablet, Smartphone) und Betriebssystemen kompatibel sein und eine einheitliche Funktionalität und Darstellung gewährleisten.
+- Die Anwendung soll auf verschiedenen Geräten (Desktop, Tablet, Smartphone) gleichermaßen gut funktionieren. Wir zielen dabei übliche Desktop-Auflösungen an (z.B. Full-HD, 4k, ...) und marktführende Smartphones (z.B. iPhone 14 Pro Max, Pixel 7, Samsung Galaxy S20 Ultra, ...)
+
+#### **4.5.1 Test**
+
+Tests erfolgen über Dev-Tools (Chromium) im Browser. Es werden auch private Geräte für die Tests verwendet.
 
 ### **4.6. Wartbarkeit**
 
-- Die Anwendung soll modular aufgebaut, umfassend dokumentiert und gut testbar sein, um die Wartung, Erweiterung und Fehlerbehebung zu erleichtern.
+- Die Anwendung verwendet [Design Patterns](https://refactoring.guru/design-patterns) und verfolgt die Objektorientierte-Programmierweise
+- Die technische und [projektorganisatorische Dokumentation](https://github.com/WayMatcher/ProjectPlanning) erfolgt in GitHub
+  - Die Doku des Backends geschieht im [Backend Repository](https://github.com/WayMatcher/Backend)
+  - Die Doku des Frotends geschieht im [Frontend Repository](https://github.com/WayMatcher/Frontend)
+  - Die Doku sowie auch Digramme der Datenbank geschehen im [Datenbank Repository](https://github.com/WayMatcher/Database)
+
+#### **4.6.1 Test**
+
+Die Wartbarkeit wird von einer aussentehenden Person via Stichproben geprüft.
 
 ---
 
@@ -240,7 +279,7 @@ Die Anwendung besteht aus folgenden Komponenten:
 
 ---
 
-## **6. Abnahmebedingungen**
+## **6. Abnahmebedingungen & Abnahmetests**
 
 ### **6.1. Abnahmezeitpunkt**
 
@@ -250,6 +289,16 @@ Die Abnehme erfolgt mit Ende des Projektabschlusses: **01.04.2025**
 
 - **Verantwortliche Person**: Hr. Pausch
 - **Qualitativer Projektabnehmer**: Hr. Pausch
+
+### **6.3 Abnahmetests**
+
+#### **6.3.1 Funktionale Tests**
+
+- siehe Testkonzept
+
+#### **6.3.2 Nichtfunktionale Anforderungen**
+
+- siehe Punkt [4. Nichtfunktionale Anforderungen](#4-nichtfunktionale-anforderungen)
 
 ---
 
