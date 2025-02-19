@@ -12,6 +12,14 @@ Es dient als Grundlage für die Entwicklung und Implementierung der Anwendung un
 - **Auftraggeber**: Hr. Pausch
 - **Entwicklungsteam**: Hr. Rudigier, Hr. Wonnebauer
 
+### **1.3. Zielgruppe**
+
+- Jugendliche
+- Studierende
+- Personen ohne Führerschein
+- Reisende
+- Sparsame Personen
+
 ---
 
 ## **2. Systembeschreibung**
@@ -167,42 +175,31 @@ Die Anwendung besteht aus folgenden Komponenten:
 
 ## **4. Nichtfunktionale Anforderungen**
 
-### **4.1. Usability**
+### **4.1. Benutzerfreundlichkeit**
 
-- Intuitive Bedienung  
-- Klare Navigation  
-- Übersichtliche Gestaltung  
-- Barrierefreiheit  
+- Die Anwendung soll benutzerfreundlich gestaltet sein, d.h. einfach zu bedienen, klar strukturiert und mit einer intuitiven Navigation ausgestattet sein.
+- Die Benutzeroberfläche soll übersichtlich und ansprechend sein und Informationen klar und prägnant darstellen.
+- Die Anwendung soll auf verschiedenen Geräten (Desktop, Tablet, Smartphone) gleichermaßen gut funktionieren.
 
 ### **4.2. Performance**
 
-- Schnelle Ladezeiten  
-- Hohe Verfügbarkeit  
-- Skalierbarkeit  
+- Die Anwendung soll eine hohe Performance gewährleisten, d.h. schnelle Ladezeiten, hohe Verfügbarkeit und Skalierbarkeit, um auch bei vielen Benutzern und großen Datenmengen eine optimale Benutzererfahrung zu bieten.
 
 ### **4.3. Sicherheit**
 
-- Datenschutz  
-- Datensicherheit  
-- Sichere Authentifizierung  
+- Die Anwendung soll ein hohes Maß an Sicherheit gewährleisten, um Benutzerdaten und die Integrität des Systems zu schützen. Dies beinhaltet die Einhaltung von Datenschutzbestimmungen, den Schutz vor unbefugtem Zugriff und Datenverlust sowie eine sichere Authentifizierung der Benutzer.
 
 ### **4.4. Zuverlässigkeit**
 
-- Stabilität  
-- Fehlertoleranz  
-- Datenintegrität  
+- Die Anwendung soll zuverlässig funktionieren, d.h. stabil laufen, fehlertolerant sein und die Integrität der Daten gewährleisten.
 
 ### **4.5. Kompatibilität**
 
-- Browserkompatibilität  
-- Gerätekompatibilität  
-- Betriebssystemkompatibilität  
+- Die Anwendung soll mit gängigen Webbrowsern, Geräten (Desktop, Tablet, Smartphone) und Betriebssystemen kompatibel sein und eine einheitliche Funktionalität und Darstellung gewährleisten.
 
 ### **4.6. Wartbarkeit**
 
-- Modularer Aufbau  
-- Dokumentation  
-- Testbarkeit  
+- Die Anwendung soll modular aufgebaut, umfassend dokumentiert und gut testbar sein, um die Wartung, Erweiterung und Fehlerbehebung zu erleichtern.
 
 ---
 
@@ -244,9 +241,16 @@ Die Anwendung besteht aus folgenden Komponenten:
 
 ---
 
-## **6. Testen und Abnahme**
+## **6. Abnahmebedingungen**
 
-TODO neu schreiben
+### **6.1. Abnahmezeitpunkt**
+
+Die Abnehme erfolgt mit Ende des Projektabschlusses: **01.04.2025**
+
+### **6.2. Projektabnehmer**
+
+- **Verantwortliche Person**: Hr. Pausch
+- **Qualitativer Projektabnehmer**: Hr. Pausch
 
 ---
 
