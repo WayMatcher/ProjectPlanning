@@ -1,11 +1,11 @@
-# WayMatcher - Projekt-Steckbrief
+# WayMatcher - Projekt-Planung
 
 ## Links der Dokumentationen
 
-### [Anforderungen](https://github.com/WayMatcher/ProjectPlanning/wiki/Anforderungen)
+### [Anforderungen](Anforderungen.md)
 
-### [Lastenheft](https://github.com/WayMatcher/ProjectPlanning/wiki/Lastenheft)
+### [Lastenheft](Lastenheft.md)
 
-### [Pflichtenheft](https://github.com/WayMatcher/ProjectPlanning/wiki/Pflichtenheft)
+### [Pflichtenheft](Pflichtenheft.md)
 
 ### [Projektsteckbrief](https://github.com/WayMatcher/ProjectPlanning/wiki/Projektsteckbrief)
