@@ -27,17 +27,17 @@ Hier wird der Status beschrieben
 
 ## **Status Inhalte & Termine**
 
-| Issue ID | Thema | Was wurde gemacht | Geplante Zeit | Tatsächliche Zeit |
-| -------- | ----- | ----------------- | ------------- | ----------------- |
-|          |       |                   |               |                   |
+| Repository | Issue ID | Thema | Was wurde gemacht | Geplante Zeit | Tatsächliche Zeit |
+| ---------- | -------- | ----- | ----------------- | ------------- | ----------------- |
+|            |          |       |                   |               |                   |
 
 ---
 
 ## **Nächste Schritte/ nächste Iteration**
 
-| Issue ID | Thema | Geplante Zeit |
-| -------- | ----- | ------------- |
-|          |       |               |
+| Repository | Issue ID | Thema | Geplante Zeit |
+| ---------- | -------- | ----- | ------------- |
+|            |          |       |               |
 
 ---
 
