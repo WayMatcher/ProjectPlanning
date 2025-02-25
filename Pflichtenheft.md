@@ -274,8 +274,8 @@ Die Wartbarkeit wird von einer aussentehenden Person via Stichproben geprüft.
 - **Pflichtenheft abgeschlossen**: 21.02.2025
 - **Umsetzung**: 24.02.2025 - 18.03.2025
 - **Testphase**: 18.03.2025 - 24.03.2025
-- **Projektpräsentation**: 25.03.2025
-- **Projektabschluss**: 01.04.2025
+- **Projektpräsentation**: 04.04.2025
+- **Projektabschluss**: 04.04.2025
 
 ---
 
