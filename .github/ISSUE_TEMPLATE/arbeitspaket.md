@@ -3,7 +3,7 @@ name: Arbeitspaket
 about: Ein neues Arbeitspaket
 title: "[1.4.X] ProjectPlanning-Arbeitspaket"
 labels: documentation
-assignees: salkinxd
+assignees: salkinxd, J00lo
 
 ---
 
