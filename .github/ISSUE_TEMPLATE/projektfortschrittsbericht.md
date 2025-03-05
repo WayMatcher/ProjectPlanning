@@ -1,9 +1,9 @@
 ---
 name: Projektfortschrittsbericht
 about: 'Woche #: Projektfortschrittsbericht erstellen'
-title: ''
+title: 'Woche #: Projektfortschrittsbericht erstellen'
 labels: documentation
-assignees: salkinxd, J00lo
+assignees: J00lo, salkinxd
 
 ---
 
