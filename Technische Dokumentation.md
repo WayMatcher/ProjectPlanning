@@ -41,8 +41,9 @@
       - [Endpoints](#endpoints-3)
     - [User Controller](#user-controller)
       - [Endpoints](#endpoints-4)
-  - [1.7 Datenbankmodell](#17-datenbankmodell)
-  - [1.10 Kontakt und Support](#110-kontakt-und-support)
+  - [1.7 Backend - Klassendiagramm](#17-backend---klassendiagramm)
+  - [1.8 Datenbankmodell](#18-datenbankmodell)
+  - [1.9 Kontakt und Support](#19-kontakt-und-support)
 
 ---
 
@@ -791,13 +792,90 @@ Handles user profile management, vehicles, ratings, and notifications.
 
 ---
 
-## 1.7 Datenbankmodell
+## 1.7 Backend - Klassendiagramm
+
+```mermaid
+classDiagram
+    class IUserService {
+        +bool RegisterUser(UserDto user, List<VehicleDto> vehicleList, List<VehicleMappingDto> vehicleMappingList)
+        +UserDto LoginUser(UserDto user)
+        +UserDto AcceptMfA(UserDto user)
+        +bool DeleteUser(UserDto user)
+        +bool ConfigurateUser(UserDto user)
+        +void SendChangePasswordMail(UserDto user)
+        +bool ChangePassword(UserDto user)
+        +bool ConfigurateVehicle(UserDto user, List<VehicleDto> vehicleList, List<VehicleMappingDto> vehicleMappingList)
+        +UserDto GetUser(UserDto user)
+        +AddressDto GetAddress(UserDto user)
+        +List<VehicleDto> GetUserVehicleList(UserDto user)
+        +List<UserDto> GetActiveUsers()
+        +bool RateUser(RatingDto rate)
+        +double UserRating(RatingDto rate)
+        +bool SendNotification(NotificationDto notification)
+        +List<NotificationDto> GetNotification(UserDto user)
+        +bool UpdateNotification(NotificationDto notification)
+    }
+
+    class IEventService {
+        +EventDto CreateEvent(EventDto eventDto, UserDto user)
+        +EventDto UpdateEvent(EventDto eventDto, UserDto user)
+        +bool CancelEvent(EventDto eventDto)
+        +bool EventInvite(InviteDto invite)
+        +bool AddEventMember(EventMemberDto eventMember)
+        +bool DeleteEventMember(EventMemberDto eventMember)
+        +bool AddStop(StopDto stop)
+        +bool RemoveStops(StopDto stop)
+        +EventDto GetEvent(EventDto eventDto)
+        +List<EventDto> GetUserEventList(UserDto user)
+        +List<EventDto> GetEventList(bool? filter)
+        +void CalculateDistance()
+        +void CalculateFuelConsumption()
+        +void CalculateTime()
+        +bool SendChatMessage(ChatMessageDto message)
+        +List<ChatMessageDto> GetChatMessage(EventMemberDto eventMember)
+        +List<UserDto> GetUserToInvite(EventDto eventDto)
+    }
+
+    class IEmailService {
+        +void SendEmail(EmailDto email)
+    }
+
+    class UserDto
+    class VehicleDto
+    class VehicleMappingDto
+    class AddressDto
+    class RatingDto
+    class NotificationDto
+    class EventDto
+    class InviteDto
+    class EventMemberDto
+    class StopDto
+    class ChatMessageDto
+    class EmailDto
+
+    IUserService --> UserDto
+    IUserService --> VehicleDto
+    IUserService --> VehicleMappingDto
+    IUserService --> AddressDto
+    IUserService --> RatingDto
+    IUserService --> NotificationDto
+
+    IEventService --> EventDto
+    IEventService --> InviteDto
+    IEventService --> EventMemberDto
+    IEventService --> StopDto
+    IEventService --> ChatMessageDto
+
+    IEmailService --> EmailDto
+```
+
+## 1.8 Datenbankmodell
 
 [Siehe ER-Diagramm](https://github.com/WayMatcher/Database/blob/main/Database%20ER-Diagram.mmd)
 
 ---
 
-## 1.10 Kontakt und Support
+## 1.9 Kontakt und Support
 
 - **E-Mail**: <support@waymatcher.hobedere.com>
 - **Telefon**: +43 123 456789
