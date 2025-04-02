@@ -41,7 +41,7 @@
       - [Endpoints](#endpoints-3)
     - [User Controller](#user-controller)
       - [Endpoints](#endpoints-4)
-  - [1.7 Backend - Klassendiagramm](#17-backend---klassendiagramm)
+  - [1.7 Klassendiagramm](#17-klassendiagramm)
   - [1.8 Datenbankmodell](#18-datenbankmodell)
   - [1.9 Kontakt und Support](#19-kontakt-und-support)
 
@@ -792,82 +792,682 @@ Handles user profile management, vehicles, ratings, and notifications.
 
 ---
 
-## 1.7 Backend - Klassendiagramm
+## 1.7 Klassendiagramm
 
 ```mermaid
 classDiagram
-    class IUserService {
-        +bool RegisterUser(UserDto user, List<VehicleDto> vehicleList, List<VehicleMappingDto> vehicleMappingList)
-        +UserDto LoginUser(UserDto user)
-        +UserDto AcceptMfA(UserDto user)
-        +bool DeleteUser(UserDto user)
-        +bool ConfigurateUser(UserDto user)
-        +void SendChangePasswordMail(UserDto user)
-        +bool ChangePassword(UserDto user)
-        +bool ConfigurateVehicle(UserDto user, List<VehicleDto> vehicleList, List<VehicleMappingDto> vehicleMappingList)
-        +UserDto GetUser(UserDto user)
-        +AddressDto GetAddress(UserDto user)
-        +List<VehicleDto> GetUserVehicleList(UserDto user)
-        +List<UserDto> GetActiveUsers()
-        +bool RateUser(RatingDto rate)
-        +double UserRating(RatingDto rate)
-        +bool SendNotification(NotificationDto notification)
-        +List<NotificationDto> GetNotification(UserDto user)
-        +bool UpdateNotification(NotificationDto notification)
+    direction LR
+
+    class EventController {
+        -IEventService _eventService
+        -IUserService _userService
+        +IActionResult CreateEvent(RequestEvent)
+        +IActionResult UpdateEvent(RequestEvent)
+        +IActionResult DeleteEvent(int)
+        +IActionResult RequestEventInvite(RequestInviteModel)
+        +IActionResult SendEventInvite(RequestInviteModel)
+        +IActionResult AddEventMember(RequestEventMember)
+        +IActionResult AddStop(RequestStop)
+        +IActionResult RemoveStop(RequestStop)
+        +IActionResult GetEventList(bool?)
+        +IActionResult GetUserEventList(int)
+        +IActionResult GetEvent(EventDto)
+        +IActionResult GetUserToInvite(EventDto)
+        -IActionResult HandleRequest(Func~IActionResult~)
+        -InviteDto CreateInviteDto(RequestInviteModel, bool)
     }
 
-    class IEventService {
-        +EventDto CreateEvent(EventDto eventDto, UserDto user)
-        +EventDto UpdateEvent(EventDto eventDto, UserDto user)
-        +bool CancelEvent(EventDto eventDto)
-        +bool EventInvite(InviteDto invite)
-        +bool AddEventMember(EventMemberDto eventMember)
-        +bool DeleteEventMember(EventMemberDto eventMember)
-        +bool AddStop(StopDto stop)
-        +bool RemoveStops(StopDto stop)
-        +EventDto GetEvent(EventDto eventDto)
-        +List<EventDto> GetUserEventList(UserDto user)
-        +List<EventDto> GetEventList(bool? filter)
-        +void CalculateDistance()
-        +void CalculateFuelConsumption()
-        +void CalculateTime()
-        +bool SendChatMessage(ChatMessageDto message)
-        +List<ChatMessageDto> GetChatMessage(EventMemberDto eventMember)
-        +List<UserDto> GetUserToInvite(EventDto eventDto)
+    class LoginController {
+        -IUserService _userService
+        +IActionResult Login(RequestUserLoginModel)
+        +IActionResult ForgotPassword(RequestUser)
+        +IActionResult ChangePassword(RequestPassword)
+        -IActionResult HandleRequest(Func~IActionResult~)
     }
 
-    class IEmailService {
-        +void SendEmail(EmailDto email)
+    class MfAController {
+        -IUserService _userService
+        +IActionResult MfAInput(RequestMFAModel)
+        -IActionResult HandleRequest(Func~IActionResult~)
     }
 
-    class UserDto
-    class VehicleDto
-    class VehicleMappingDto
-    class AddressDto
-    class RatingDto
-    class NotificationDto
-    class EventDto
-    class InviteDto
-    class EventMemberDto
-    class StopDto
-    class ChatMessageDto
-    class EmailDto
+    class RegisterController {
+        -IUserService _userService
+        +IActionResult NewUser(RequestUserChange)
+        -IActionResult HandleRequest(Func~IActionResult~)
+        -List~VehicleDto~ MapToVehicleDtoList(List~RequestVehicleModel~)
+        -List~VehicleMappingDto~ MapToVehicleMappingDtoList(List~RequestVehicleModel~)
+    }
 
-    IUserService --> UserDto
-    IUserService --> VehicleDto
-    IUserService --> VehicleMappingDto
-    IUserService --> AddressDto
-    IUserService --> RatingDto
-    IUserService --> NotificationDto
+    class UserController {
+        -IUserService _userService
+        +IActionResult EditUser(RequestUserChange)
+        +IActionResult DeleteUser(RequestUser)
+        +IActionResult GetUser(RequestUser)
+        +IActionResult GetAddress(RequestUser)
+        +IActionResult GetVehicleList(RequestUser)
+        +IActionResult RateUser(RequestRateUser)
+        +IActionResult GetUserRating(int)
+        +IActionResult SendNotification(NotificationDto)
+        +IActionResult ReadNotification(int)
+        +IActionResult GetNotification(int)
+        +IActionResult GetStatus()
+        -IActionResult HandleRequest(Func~IActionResult~)
+        -UserDto MapToUserDto(RequestUser)
+    }
 
-    IEventService --> EventDto
-    IEventService --> InviteDto
-    IEventService --> EventMemberDto
-    IEventService --> StopDto
-    IEventService --> ChatMessageDto
+    class RequestEvent {
+        +UserDto User
+        +EventDto Event
+    }
 
-    IEmailService --> EmailDto
+    class RequestEventMember {
+        +int EventID
+        +int UserID
+        +int EventRole
+    }
+
+    class RequestInviteModel {
+        +int UserId
+        +int EventId
+        +bool IsPilot
+        +string Message
+    }
+
+     class RequestMFAModel {
+        +string Token
+        +int UserId
+    }
+
+    class RequestPassword {
+        +string HashedUsername
+        +string Password
+    }
+
+    class RequestRateUser {
+      +int? RatingId
+      +string? RatingText
+      +int RatingValue
+      +int RatedUserId
+      +int UserWhoRatedId
+      +int? StatusId
+    }
+
+    class RequestStop {
+        +int StopId
+        +int StopSequenceNumber
+        +AddressDto Address
+        +int EventId
+    }
+
+    class RequestUser {
+        +int? UserId
+        +string? Username
+        +string? Email
+    }
+
+    class RequestUserChange {
+        +UserDto User
+        +List~RequestVehicleModel~? VehicleList
+        +string Password
+    }
+
+     class RequestUserLoginModel {
+        +string? Username
+        +string? Email
+        +string Password
+    }
+
+    class RequestVehicleModel {
+        +int? VehicleId
+        +string? Model
+        +int? Seats
+        +int? YearOfManufacture
+        +string? ManufacturerName
+        +string? LicensePlate
+        +string? AdditionalInfo
+        +decimal? FuelMilage
+    }
+
+    EventController --> IEventService : Uses
+    EventController --> IUserService : Uses
+    EventController --> RequestEvent : Uses
+    EventController --> RequestInviteModel : Uses
+    EventController --> RequestEventMember : Uses
+    EventController --> RequestStop : Uses
+    EventController --> EventDto : Uses
+    EventController --> InviteDto : Creates
+
+    LoginController --> IUserService : Uses
+    LoginController --> RequestUserLoginModel : Uses
+    LoginController --> RequestUser : Uses
+    LoginController --> RequestPassword : Uses
+
+    MfAController --> IUserService : Uses
+    MfAController --> RequestMFAModel : Uses
+
+    RegisterController --> IUserService : Uses
+    RegisterController --> RequestUserChange : Uses
+    RegisterController --> RequestVehicleModel : Uses
+    RegisterController --> VehicleDto : Creates
+    RegisterController --> VehicleMappingDto : Creates
+
+    UserController --> IUserService : Uses
+    UserController --> RequestUserChange : Uses
+    UserController --> RequestUser : Uses
+    UserController --> RequestRateUser : Uses
+    UserController --> NotificationDto : Uses
+    UserController --> UserDto : Creates
+
+    RequestEvent --> UserDto
+    RequestEvent --> EventDto
+    RequestStop --> AddressDto
+    RequestUserChange --> UserDto
+    RequestUserChange --> RequestVehicleModel
 ```
+
+```mermaid
+classDiagram
+    direction LR
+
+    class ConfigurationService {
+        -IConfiguration _configuration
+        +string GetConnectionString(string)
+        +EmailServerDto GetEmailServer()
+        +string GetSecretKey()
+        +string GetCertificate()
+    }
+
+    class DatabaseService {
+        -WayMatcherContext _dbContext
+        -ModelMapper _mapper
+        +bool InsertUser(UserDto)
+        +bool UpdateUser(UserDto)
+        +UserDto GetUser(UserDto)
+        +List~UserDto~ GetActiveUsers()
+        +bool InsertAddress(AddressDto)
+        +bool UpdateAddress(AddressDto)
+        +AddressDto GetAddress(AddressDto)
+        +AddressDto GetAddress(UserDto)
+        +bool InsertVehicle(VehicleDto)
+        +bool UpdateVehicle(VehicleDto)
+        +VehicleDto GetVehicleById(int)
+        +int GetVehicleId(VehicleDto)
+        +ScheduleDto InsertSchedule(ScheduleDto)
+        +bool UpdateSchedule(ScheduleDto)
+        +ScheduleDto GetScheduleById(int)
+        +int GetScheduleId(ScheduleDto)
+        +EventDto InsertEvent(EventDto)
+        +bool UpdateEvent(EventDto)
+        +EventDto GetEvent(EventDto)
+        +List~EventDto~ GetEventList(bool?)
+        +List~EventDto~ GetUserEventList(UserDto)
+        +int GetEventId(EventDto)
+        +List~VehicleDto~ GetUserVehicles(UserDto)
+        +bool InsertVehicleMapping(VehicleMappingDto)
+        +bool InsertStop(StopDto)
+        +bool DeleteStop(StopDto)
+        +List~StopDto~ GetStopList(EventDto)
+        +bool InsertToInvite(InviteDto)
+        +bool UpdateInvite(InviteDto)
+        +List~InviteDto~ GetInviteList(EventDto)
+        +bool InsertToEventMember(EventMemberDto)
+        +bool UpdateEventMember(EventMemberDto)
+        +UserDto GetEventOwner(EventDto)
+        +List~EventMemberDto~ GetEventMemberList(EventDto)
+        +bool InsertChatMessage(ChatMessageDto)
+        +List~ChatMessageDto~ GetChatMessageList(EventMemberDto)
+        +bool InsertRating(RatingDto)
+        +bool UpdateRating(RatingDto)
+        +List~RatingDto~ GetRatingList(UserDto)
+        +RatingDto GetRating(RatingDto)
+        +bool InsertNotification(NotificationDto)
+        +List~NotificationDto~ GetNotificationList(UserDto)
+        +bool UpdateNotification(NotificationDto)
+    }
+
+    class EmailService {
+        -SmtpClient _smtpClient
+        -EmailServerDto _emailServer
+        +void SendEmail(EmailDto)
+        +void Dispose()
+    }
+
+    class EventService {
+        -IDatabaseService _databaseService
+        -IEmailService _emailService
+        +EventDto CreateEvent(EventDto, UserDto)
+        +EventDto UpdateEvent(EventDto, UserDto)
+        +bool CancelEvent(EventDto)
+        +bool EventInvite(InviteDto)
+        +bool AddEventMember(EventMemberDto)
+        +bool DeleteEventMember(EventMemberDto)
+        +bool AddStop(StopDto)
+        +bool RemoveStops(StopDto)
+        +EventDto GetEvent(EventDto)
+        +List~EventDto~ GetUserEventList(UserDto)
+        +List~EventDto~ GetEventList(bool?)
+        +bool SendChatMessage(ChatMessageDto)
+        +List~ChatMessageDto~ GetChatMessage(EventMemberDto)
+        +List~UserDto~ GetUserToInvite(EventDto)
+    }
+
+    class UserService {
+        -IDatabaseService _databaseService
+        -IEmailService _emailService
+        -ConfigurationService _configuration
+        +bool RegisterUser(UserDto, List~VehicleDto~, List~VehicleMappingDto~)
+        +UserDto LoginUser(UserDto)
+        +UserDto AcceptMfA(UserDto)
+        +bool DeleteUser(UserDto)
+        +bool ConfigurateUser(UserDto)
+        +void SendChangePasswordMail(UserDto)
+        +bool ChangePassword(UserDto)
+        +bool ConfigurateVehicle(UserDto, List~VehicleDto~, List~VehicleMappingDto~)
+        +UserDto GetUser(UserDto)
+        +AddressDto GetAddress(UserDto)
+        +List~VehicleDto~ GetUserVehicleList(UserDto)
+        +List~UserDto~ GetActiveUsers()
+        +bool RateUser(RatingDto)
+        +double UserRating(RatingDto)
+        +bool SendNotification(NotificationDto)
+        +List~NotificationDto~ GetNotification(UserDto)
+        +bool UpdateNotification(NotificationDto)
+    }
+
+    class IDatabaseService {
+        <<interface>>
+    }
+    class IEmailService {
+        <<interface>>
+    }
+    class IEventService {
+        <<interface>>
+    }
+    class IUserService {
+        <<interface>>
+    }
+
+    class ModelMapper {
+      +AddressDto ConvertAddressToDto(Address)
+      +Address ConvertAddressDtoToEntity(AddressDto)
+      +EventDto ConvertEventToDto(Event)
+      +EventDto ConvertVwPilotEventToDto(VwPilotEvent)
+      +EventDto ConvertVwPassengerEventToDto(VwPassengerEvent)
+      +EventDto ConvertFNUserEventToDto(FN_GetEventsByMemberUserIdResult)
+      +Event ConvertEventDtoToEntity(EventDto)
+      +ScheduleDto ConvertScheduleToDto(Schedule)
+      +Schedule ConvertScheduleDtoToEntity(ScheduleDto)
+      +UserDto ConvertUserToDto(User)
+      +User ConvertUserDtoToEntity(UserDto)
+      +VehicleDto ConvertVehicleToDto(Vehicle)
+      +Vehicle ConvertVehicleDtoToEntity(VehicleDto)
+      +VehicleMappingDto ConvertVehicleMappingToDto(VehicleMapping)
+      +VehicleMapping ConvertVehicleMappingDtoToEntity(VehicleMappingDto)
+      +StopDto ConvertStopToDto(Stop)
+      +Stop ConvertStopDtoToEntity(StopDto)
+      +InviteDto ConvertInviteToDto(Invite)
+      +Invite ConvertInviteDtoToEntity(InviteDto)
+      +EventMemberDto ConvertEventMemberToDto(EventMember)
+      +EventMember ConvertEventMemberDtoToEntity(EventMemberDto)
+      +ChatMessageDto ConvertChatMessageToDto(ChatMessage)
+      +ChatMessage ConvertChatMessageDtoToEntity(ChatMessageDto)
+      +RatingDto ConvertRatingToDto(Rating)
+      +Rating ConvertRatingDtoToEntity(RatingDto)
+      +NotificationDto ConvertNotificationToDto(Notification)
+      +Notification ConvertNotificationDtoToEntity(NotificationDto)
+      +StatusDto ConvertStatusToDto(Status)
+      +Status ConvertStatusDtoToEntity(StatusDto)
+    }
+
+    DatabaseService ..|> IDatabaseService
+    EmailService ..|> IEmailService
+    EventService ..|> IEventService
+    UserService ..|> IUserService
+
+    DatabaseService --> WayMatcherContext : Uses
+    DatabaseService --> ModelMapper : Uses
+    EmailService --> ConfigurationService : Uses
+    EventService --> IDatabaseService : Uses
+    EventService --> IEmailService : Uses
+    UserService --> IDatabaseService : Uses
+    UserService --> IEmailService : Uses
+    UserService --> ConfigurationService : Uses
+
+    DatabaseService --> EventDto : Returns/Uses
+    DatabaseService --> UserDto : Returns/Uses
+    DatabaseService --> AddressDto : Returns/Uses
+    DatabaseService --> VehicleDto : Returns/Uses
+    DatabaseService --> ScheduleDto : Returns/Uses
+    DatabaseService --> StopDto : Returns/Uses
+    DatabaseService --> InviteDto : Returns/Uses
+    DatabaseService --> EventMemberDto : Returns/Uses
+    DatabaseService --> ChatMessageDto : Returns/Uses
+    DatabaseService --> RatingDto : Returns/Uses
+    DatabaseService --> NotificationDto : Returns/Uses
+    DatabaseService --> StatusDto : Returns/Uses
+    DatabaseService --> VehicleMappingDto : Uses
+
+    EmailService --> EmailDto : Uses
+    EventService --> EventDto : Uses
+    EventService --> UserDto : Uses
+    EventService --> InviteDto : Uses
+    EventService --> StopDto : Uses
+    EventService --> EventMemberDto : Uses
+    EventService --> ChatMessageDto : Uses
+    UserService --> UserDto : Uses
+    UserService --> VehicleDto : Uses
+    UserService --> VehicleMappingDto : Uses
+    UserService --> AddressDto : Returns/Uses
+    UserService --> RatingDto : Uses
+    UserService --> NotificationDto : Returns/Uses
+
+    ModelMapper --> AddressDto : Maps
+    ModelMapper --> Address : Maps
+    ModelMapper --> EventDto : Maps
+    ModelMapper --> Event : Maps
+    ModelMapper --> ScheduleDto : Maps
+    ModelMapper --> Schedule : Maps
+    ModelMapper --> UserDto : Maps
+    ModelMapper --> User : Maps
+    ModelMapper --> VehicleDto : Maps
+    ModelMapper --> Vehicle : Maps
+    ModelMapper --> VehicleMappingDto : Maps
+    ModelMapper --> VehicleMapping : Maps
+    ModelMapper --> StopDto : Maps
+    ModelMapper --> Stop : Maps
+    ModelMapper --> InviteDto : Maps
+    ModelMapper --> Invite : Maps
+    ModelMapper --> EventMemberDto : Maps
+    ModelMapper --> EventMember : Maps
+    ModelMapper --> ChatMessageDto : Maps
+    ModelMapper --> ChatMessage : Maps
+    ModelMapper --> RatingDto : Maps
+    ModelMapper --> Rating : Maps
+    ModelMapper --> NotificationDto : Maps
+    ModelMapper --> Notification : Maps
+    ModelMapper --> StatusDto : Maps
+    ModelMapper --> Status : Maps
+    ModelMapper --> VwPilotEvent : Maps
+    ModelMapper --> VwPassengerEvent : Maps
+    ModelMapper --> FN_GetEventsByMemberUserIdResult : Maps
+
+    class EmailDto { }
+    class EmailServerDto { }
+    class EventMemberDto { }
+    class InviteDto { }
+    class StopDto { }
+    class ChatMessageDto { }
+    class RatingDto { }
+    class NotificationDto { }
+    class StatusDto { }
+    class AddressDto { }
+    class EventDto { }
+    class ScheduleDto { }
+    class UserDto { }
+    class VehicleDto { }
+    class VehicleMappingDto { }
+```
+
+```mermaid
+classDiagram
+    direction LR
+
+    class Address {
+        +int AddressId
+        +string City
+        +string PostalCode
+        +string Street
+        +string Country
+        +string CountryCode
+        +string Region
+        +string State
+        +double? Longitude
+        +double? Latitude
+        +string AddressLine1
+        +string AddressLine2
+        +int? StatusId
+        +Status Status
+        +ICollection~Stop~ Stops
+        +ICollection~User~ Users
+    }
+
+    class Audit {
+        +int AuditId
+        +string Message
+        +string EntityType
+        +DateTime? Timestamp
+        +int? EntityId
+        +int? UserId
+        +User User
+    }
+
+    class ChatMessage {
+        +int ChatMessageId
+        +string Message
+        +DateTime? Timestamp
+        +int? UserId
+        +int? EventId
+        +Event Event
+        +User User
+    }
+
+    class Event {
+        +int EventId
+        +int? EventTypeId
+        +int? FreeSeats
+        +string Description
+        +DateTime? StartTimestamp
+        +int? ScheduleId
+        +int? StatusId
+        +int? EventOwnerId
+        +ICollection~ChatMessage~ ChatMessages
+        +ICollection~EventMember~ EventMembers
+        +ICollection~Invite~ Invites
+        +Schedule Schedule
+        +Status Status
+        +ICollection~Stop~ Stops
+    }
+
+    class EventMember {
+        +int MemberId
+        +int? EventMemberTypeId
+        +int? UserId
+        +int? EventId
+        +int? StatusId
+        +Event Event
+        +Status Status
+        +User User
+    }
+
+    class Invite {
+        +int InviteId
+        +int StatusId
+        +bool? IsRequest
+        +int? EventId
+        +int? UserId
+        +Event Event
+        +Status Status
+        +User User
+    }
+
+    class Notification {
+        +int NotificationId
+        +bool? Read
+        +string Message
+        +string EntityType
+        +int? EntityId
+        +int? UserId
+        +User User
+    }
+
+    class Rating {
+        +int RatingId
+        +string RatingText
+        +int? RatingValue
+        +int? RatedUserId
+        +int? UserWhoRatedId
+        +int? StatusId
+        +User RatedUser
+        +Status Status
+        +User UserWhoRated
+    }
+
+    class Role {
+        +int RoleId
+        +string Name
+        +string Description
+        +ICollection~User~ Users
+    }
+
+    class Schedule {
+        +int ScheduleId
+        +string CronSchedule
+        +int? UserId
+        +ICollection~Event~ Events
+        +User User
+    }
+
+    class Status {
+        +int StatusId
+        +string StatusDescription
+        +ICollection~Address~ Addresses
+        +ICollection~EventMember~ EventMembers
+        +ICollection~Event~ Events
+        +ICollection~Invite~ Invites
+        +ICollection~Rating~ Ratings
+        +ICollection~User~ Users
+        +ICollection~VehicleMapping~ VehicleMappings
+        +ICollection~Vehicle~ Vehicles
+    }
+
+    class Stop {
+        +int StopId
+        +int? StopSequenceNumber
+        +int? AddressId
+        +int? EventId
+        +Address Address
+        +Event Event
+    }
+
+    class User {
+        +int UserId
+        +string Firstname
+        +string Name
+        +string Username
+        +string Password
+        +string EMail
+        +string Telephone
+        +string AdditionalDescription
+        +bool? LicenseVerified
+        +byte[] ProfilePicture
+        +DateTime? CreationDate
+        +int? AddressId
+        +int? RoleId
+        +int? StatusId
+        +string MfAtoken
+        +Address Address
+        +ICollection~Audit~ Audits
+        +ICollection~ChatMessage~ ChatMessages
+        +ICollection~EventMember~ EventMembers
+        +ICollection~Invite~ Invites
+        +ICollection~Notification~ Notifications
+        +ICollection~Rating~ RatingRatedUsers
+        +ICollection~Rating~ RatingUserWhoRateds
+        +Role Role
+        +ICollection~Schedule~ Schedules
+        +Status Status
+        +ICollection~VehicleMapping~ VehicleMappings
+    }
+
+    class Vehicle {
+        +int VehicleId
+        +string Model
+        +int? Seats
+        +int? YearOfManufacture
+        +string ManufacturerName
+        +int? StatusId
+        +Status Status
+        +ICollection~VehicleMapping~ VehicleMappings
+    }
+
+    class VehicleMapping {
+        +int VehicleMappingId
+        +decimal? FuelMilage
+        +string AdditionalInfo
+        +string LicensePlate
+        +int? VehicleId
+        +int? UserId
+        +int? StatusId
+        +Status Status
+        +User User
+        +Vehicle Vehicle
+    }
+
+    class WayMatcherContext {
+       +DbSet~Address~ Addresses
+       +DbSet~Audit~ Audits
+       +DbSet~ChatMessage~ ChatMessages
+       +DbSet~Event~ Events
+       +DbSet~EventMember~ EventMembers
+       +DbSet~Invite~ Invites
+       +DbSet~Notification~ Notifications
+       +DbSet~Rating~ Ratings
+       +DbSet~Role~ Roles
+       +DbSet~Schedule~ Schedules
+       +DbSet~Status~ Statuses
+       +DbSet~Stop~ Stops
+       +DbSet~User~ Users
+       +DbSet~Vehicle~ Vehicles
+       +DbSet~VehicleMapping~ VehicleMappings
+    }
+
+
+    Address "1" *-- "0..*" Stop : Contains
+    Address "1" *-- "0..*" User : Contains
+    Status "1" *-- "0..*" Address : Has
+    Status "1" *-- "0..*" EventMember : Has
+    Status "1" *-- "0..*" Event : Has
+    Status "1" *-- "0..*" Invite : Has
+    Status "1" *-- "0..*" Rating : Has
+    Status "1" *-- "0..*" User : Has
+    Status "1" *-- "0..*" VehicleMapping : Has
+    Status "1" *-- "0..*" Vehicle : Has
+    User "1" *-- "0..*" Audit : Logs
+    User "1" *-- "0..*" ChatMessage : Sends
+    User "1" *-- "0..*" EventMember : Is
+    User "1" *-- "0..*" Invite : Receives/Sends
+    User "1" *-- "0..*" Notification : Receives
+    User "1" *-- "0..*" Rating : Rates (UserWhoRated)
+    User "1" *-- "0..*" Rating : IsRated (RatedUser)
+    User "1" *-- "0..*" Schedule : Owns
+    User "1" *-- "0..*" VehicleMapping : Owns
+    Event "1" *-- "0..*" ChatMessage : Belongs To
+    Event "1" *-- "0..*" EventMember : Has
+    Event "1" *-- "0..*" Invite : Belongs To
+    Event "1" *-- "0..*" Stop : Has
+    Schedule "1" *-- "0..*" Event : Uses
+    Role "1" *-- "0..*" User : Has
+    Vehicle "1" *-- "0..*" VehicleMapping : Has
+
+
+    WayMatcherContext --> Address
+    WayMatcherContext --> Audit
+    WayMatcherContext --> ChatMessage
+    WayMatcherContext --> Event
+    WayMatcherContext --> EventMember
+    WayMatcherContext --> Invite
+    WayMatcherContext --> Notification
+    WayMatcherContext --> Rating
+    WayMatcherContext --> Role
+    WayMatcherContext --> Schedule
+    WayMatcherContext --> Status
+    WayMatcherContext --> Stop
+    WayMatcherContext --> User
+    WayMatcherContext --> Vehicle
+    WayMatcherContext --> VehicleMapping
+```
+
 
 ## 1.8 Datenbankmodell
 
